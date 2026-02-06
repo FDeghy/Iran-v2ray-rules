@@ -56,7 +56,7 @@ jobs:
           path: ipranges
 
       - name: Download geo-tools
-        run: gh release download -p "*.tar.gz" --repo Chocolate4U/geo-tools
+        run: gh release download -p "*.tar.gz" --repo FDeghy/geo-tools
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
