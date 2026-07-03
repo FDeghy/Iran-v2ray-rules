@@ -11,46 +11,53 @@ on:
   schedule:
     - cron: "40 4 * * *"
 
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Iran-v2ray-rules repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Checkout geolite2 branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: geolite2
           path: geolite2
 
       - name: Checkout ip2location branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: ip2location
           path: ip2location
-      
+
       - name: Checkout redundant branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: redundant
           path: redundant
 
       - name: Checkout ito.gov.ir-Mirror repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: Chocolate4U/ito.gov.ir-Mirror
           path: ito.gov.ir-Mirror
-      
+
       - name: Checkout domain-list-community repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: v2fly/domain-list-community
           path: v2ray-geosite
 
       - name: Checkout ipranges repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: lord-alfred/ipranges
           path: ipranges
@@ -231,12 +238,16 @@ jobs:
         if: ${{ !inputs.PRE_RELEASE }}
         run: |
           cd release || exit 1
-          find . -type f | sed 's|^\./||' | while read -r file; do
-            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/${file}"
+          # Only the documented top-level bundle files need a forced purge; the
+          # per-category rule-set files (text/srs/mrs/clash/surge/nginx) number in the
+          # hundreds and refresh naturally within jsDelivr's normal cache TTL.
+          for file in *.dat *.mmdb *.sha256sum; do
+            [[ -e "$file" ]] || continue
+            curl -s -o /dev/null -w "%{http_code} ${file}\n" "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/${file}"
           done
 
       - name: Release and upload assets
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           name: ${{ env.RELEASE_NAME }}
           tag_name: ${{ env.TAG_NAME }}

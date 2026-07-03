@@ -1,18 +1,25 @@
 name: Find Redundant Domains
 
-on: 
+on:
   workflow_dispatch:
   schedule:
     - cron: "20 23 * * *"
 
-env:
-  RELEASE_NAME: $(date +%Y%m%d%H%M)
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
 
 jobs:
   check-domains:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+
+      - name: Set ENV variables
+        run: echo "RELEASE_NAME=$(date +%Y%m%d%H%M)" >> $GITHUB_ENV
 
       - name: Install dependencies
         run: |
@@ -20,10 +27,12 @@ jobs:
           sudo apt-get install csvkit
 
       - name: Get Check-Domains script
-        run: curl -sSLO https://raw.githubusercontent.com/Chocolate4U/Domain-Health-Checker/main/Check-Domains.ps1
+        run: curl --connect-timeout 15 -fsSLO https://raw.githubusercontent.com/Chocolate4U/Domain-Health-Checker/main/Check-Domains.ps1
 
       - name: Get domains
-        run: curl -sSL https://github.com/bootmortis/iran-hosted-domains/releases/latest/download/domains.txt | grep -Ev ".+\.ir$" | sort -u > domains.txt
+        run: |
+          curl --connect-timeout 15 -fsSL https://github.com/bootmortis/iran-hosted-domains/releases/latest/download/domains.txt | grep -Ev ".+\.ir$" | sort -u > domains.txt
+          [[ -s domains.txt ]] || { echo "::error::downloaded domains.txt is empty, aborting"; exit 1; }
 
       - name: Check Domains with Cloudflare
         shell: pwsh

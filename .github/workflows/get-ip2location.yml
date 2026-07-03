@@ -5,43 +5,46 @@ on:
   schedule:
     - cron: "20 4 1,15 * *"
 
-env:
-  RELEASE_NAME: $(date +%Y%m%d%H%M)
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install csvkit
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set ENV variables
+        run: echo "RELEASE_NAME=$(date +%Y%m%d%H%M)" >> $GITHUB_ENV
 
       - name: Get IP2Location-Lite database
         env:
           DOWNLOAD_TOKEN: ${{ secrets.IP2LOCATION_DOWNLOAD_TOKEN }}
         run: |
-          curl -sSL "https://www.ip2location.com/download/?token=${DOWNLOAD_TOKEN}&file=DB1LITECSV" -o IP2LOCATION-LITE-DB1.CSV.ZIP
+          curl --connect-timeout 15 -fsSL "https://www.ip2location.com/download/?token=${DOWNLOAD_TOKEN}&file=DB1LITECSV" -o IP2LOCATION-LITE-DB1.CSV.ZIP
           unzip IP2LOCATION-LITE-DB1.CSV.ZIP -d IP2LOCATION-LITE-DB1
-      
+
       - name: install ip2location-csv-converter script
         run: pip install ip2location-python-csv-converter
-    
+
       - name: Convert database from numeric to cidr
         run: |
           ip2location-csv-converter -cidr -replace IP2LOCATION-LITE-DB1/IP2LOCATION-LITE-DB1.CSV IP2LOCATION-LITE-DB1.CIDR.CSV
-    
+
       - name: Extract Countries IPs
         run: |
           mkdir -p ip2location
-          cat IP2LOCATION-LITE-DB1.CIDR.CSV | awk -F"," '{print $2}' | sort -u | sed -e '1d' -e 's/\"//g' > countries.txt
-          while read l
-          do
-            csvgrep -c 2 -m "$l" IP2LOCATION-LITE-DB1.CIDR.CSV | csvcut -c 1 | sed '1d' > "ip2location/$l.txt"
-          done < countries.txt
+          # Single pass instead of one csvgrep scan of the whole file per country.
+          awk -F, 'NR>1 {
+            cidr=$1; country=$2;
+            gsub(/"/, "", cidr); gsub(/"/, "", country);
+            if (country != "") print cidr > ("ip2location/" country ".txt")
+          }' IP2LOCATION-LITE-DB1.CIDR.CSV
 
       - name: Push assets to ip2location branch
         run: |
