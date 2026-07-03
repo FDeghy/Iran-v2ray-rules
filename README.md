@@ -261,7 +261,7 @@ Add the following to your v2ray/xray client configuration:
   Contains the IP addresses of ParsPack.com CDN. :information_source: Integrated in `geoip:ir` and no longer needed to be written as a separate rule.
 
 - `geoip:cdn`  
-  Aggregate of all CDN and cloud-hosting IP addresses in this project: `arvancloud`, `derakcloud`, `iranserver`, `parspack`, `cloudflare`, `cloudfront`, `fastly`, `gcore`, `amazon`, `microsoft`, `google`, `oracle`, `digitalocean` and `linode`.
+  Aggregate of all CDN and cloud-hosting IP addresses in this project: `arvancloud`, `derakcloud`, `iranserver`, `parspack`, `cloudflare`, `cloudfront`, `fastly`, `gcore`, `akamai`, `edgio`, `bunnycdn`, `amazon`, `microsoft`, `google`, `oracle`, `digitalocean` and `linode`.
 
 - `geoip:cloudflare`  
   Contains the IP addresses of Cloudflare CDN.
@@ -274,6 +274,15 @@ Add the following to your v2ray/xray client configuration:
 
 - `geoip:gcore`  
   Contains the IP addresses of G-Core CDN.
+
+- `geoip:akamai`  
+  Contains the IP addresses of Akamai CDN.
+
+- `geoip:edgio`  
+  Contains the IP addresses of Edgio (Limelight Networks) CDN.
+
+- `geoip:bunnycdn`  
+  Contains the IP addresses of Bunny.net CDN.
 
 - `geoip:google`  
   Contains the IP addresses of Google, GoogleCloud and GoogleBot.
@@ -351,7 +360,7 @@ Add the following to your v2ray/xray client configuration:
   <summary><strong>Categories in <code>cdn-ip.dat</code></strong></summary>
 
 - `geoip:cdn`  
-  Aggregate of all CDN and cloud-hosting IP addresses in this project: `arvancloud`, `derakcloud`, `iranserver`, `parspack`, `cloudflare`, `cloudfront`, `fastly`, `gcore`, `amazon`, `microsoft`, `google`, `oracle`, `digitalocean` and `linode`.
+  Aggregate of all CDN and cloud-hosting IP addresses in this project: `arvancloud`, `derakcloud`, `iranserver`, `parspack`, `cloudflare`, `cloudfront`, `fastly`, `gcore`, `akamai`, `edgio`, `bunnycdn`, `amazon`, `microsoft`, `google`, `oracle`, `digitalocean` and `linode`.
 
 </details>
 
@@ -371,7 +380,7 @@ Add the following to your v2ray/xray client configuration:
   Contains the IP addresses of ParsPack.com CDN.
 
 - `geoip:cdn`  
-  Aggregate of all CDN and cloud-hosting IP addresses in this project: `arvancloud`, `derakcloud`, `iranserver`, `parspack`, `cloudflare`, `cloudfront`, `fastly`, `gcore`, `amazon`, `microsoft`, `google`, `oracle`, `digitalocean` and `linode`.
+  Aggregate of all CDN and cloud-hosting IP addresses in this project: `arvancloud`, `derakcloud`, `iranserver`, `parspack`, `cloudflare`, `cloudfront`, `fastly`, `gcore`, `akamai`, `edgio`, `bunnycdn`, `amazon`, `microsoft`, `google`, `oracle`, `digitalocean` and `linode`.
 
 - `geoip:cloudflare`  
   Contains the IP addresses of Cloudflare CDN.
@@ -384,6 +393,15 @@ Add the following to your v2ray/xray client configuration:
 
 - `geoip:gcore`  
   Contains the IP addresses of G-Core CDN.
+
+- `geoip:akamai`  
+  Contains the IP addresses of Akamai CDN.
+
+- `geoip:edgio`  
+  Contains the IP addresses of Edgio (Limelight Networks) CDN.
+
+- `geoip:bunnycdn`  
+  Contains the IP addresses of Bunny.net CDN.
 
 - `geoip:google`  
   Contains the IP addresses of Google, GoogleCloud and GoogleBot.
@@ -578,6 +596,9 @@ All rights are reserved for All upstream sources used in this project according 
 | Cloudfront             | Cloudfront           | [Home Page](https://ip-ranges.amazonaws.com/ip-ranges.json)                               | All rights reserved                                                                  | cloudfront        |
 | Fastly                 | Fastly               | [Home Page](https://api.fastly.com/public-ip-list)                                        | All rights reserved                                                                  | fastly            |
 | G-Core                 | G-Core               | [Home Page](https://api.gcore.com/cdn/public-ip-list)                                     | All rights reserved                                                                  | gcore             |
+| Akamai                 | Akamai               | [Home Page](https://www.akamai.com)                                                       | All rights reserved                                                                  | akamai            |
+| Edgio                  | Edgio                | [Home Page](https://edg.io)                                                               | All rights reserved                                                                  | edgio             |
+| Bunny.net              | Bunny.net            | [Home Page](https://bunny.net)                                                            | All rights reserved                                                                  | bunnycdn          |
 | Netflix                | Netflix              | [Home Page](https://www.netflix.com)                                                      | All rights reserved                                                                  | netflix           |
 | Telegram               | Telegram             | [Home Page](https://core.telegram.org/resources/cidr.txt)                                 | All rights reserved                                                                  | telegram          |
 | Tor                    | Tor Project          | [Home Page](https://check.torproject.org/torbulkexitlist)                                 | All rights reserved                                                                  | tor               |

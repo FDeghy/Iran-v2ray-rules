@@ -317,6 +317,22 @@
       "type": "text",
       "action": "add",
       "args": {
+        "name": "bunnycdn",
+        "uri": "https://api.bunny.net/system/edgeserverlist/plain"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "cdn",
+        "uri": "https://api.bunny.net/system/edgeserverlist/plain"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
         "name": "amazon",
         "uri": "./ipranges/amazon/ipv4_merged.txt"
       }
@@ -544,7 +560,24 @@
         "ipv4": "geolite2/GeoLite2-ASN-Blocks-IPv4.csv",
         "ipv6": "geolite2/GeoLite2-ASN-Blocks-IPv6.csv",
         "wantedList": {
+          "akamai": [
+            "AS20940",
+            "AS16625",
+            "AS34164",
+            "AS35994",
+            "AS31377",
+            "AS21342"
+          ],
+          "edgio": ["AS22822", "AS60261"],
           "cdn": [
+            "AS20940",
+            "AS16625",
+            "AS34164",
+            "AS35994",
+            "AS31377",
+            "AS21342",
+            "AS22822",
+            "AS60261",
             "AS402542",
             "AS400095",
             "AS395747",
@@ -709,14 +742,17 @@
       "args": {
         "outputName": "geoip-services.dat",
         "wantedList": [
+          "akamai",
           "amazon",
           "arvancloud",
           "bing",
+          "bunnycdn",
           "cdn",
           "cloudflare",
           "cloudfront",
           "derakcloud",
           "digitalocean",
+          "edgio",
           "facebook",
           "fastly",
           "gcore",
@@ -805,13 +841,16 @@
       "args": {
         "outputName": "Services.mmdb",
         "wantedList": [
+          "akamai",
           "amazon",
           "arvancloud",
           "bing",
+          "bunnycdn",
           "cloudflare",
           "cloudfront",
           "derakcloud",
           "digitalocean",
+          "edgio",
           "facebook",
           "fastly",
           "gcore",
