@@ -145,9 +145,14 @@ jobs:
           tar -xvzf geoip.tar.gz
           rm -rf ip2location/.git
           ./geoip convert -c config.json
-          cp output/dat/geoip.dat output/dat/geoip-lite.dat output/dat/security-ip.dat output/dat/geoip-services.dat release
-          cp output/maxmind/Country.mmdb output/maxmind/Country-lite.mmdb output/maxmind/Security-ip.mmdb output/maxmind/Services.mmdb release
+          cp output/dat/geoip.dat output/dat/geoip-lite.dat output/dat/security-ip.dat output/dat/geoip-services.dat output/dat/cdn-ip.dat release
+          cp output/maxmind/Country.mmdb output/maxmind/Country-lite.mmdb output/maxmind/Security-ip.mmdb output/maxmind/Services.mmdb output/maxmind/CDN.mmdb release
           cp -fpPR output/text release
+          cp -fpPR output/srs release
+          cp -fpPR output/mrs release
+          cp -fpPR output/clash release
+          cp -fpPR output/surge release
+          cp -fpPR output/nginx release
 
       - name: Verify *.mmdb files
         run: |
@@ -156,6 +161,7 @@ jobs:
           ./mmdbverify -file release/Country-lite.mmdb
           ./mmdbverify -file release/Security-ip.mmdb
           ./mmdbverify -file release/Services.mmdb
+          ./mmdbverify -file release/CDN.mmdb
 
       - name: Generate geosite.dat, geosite-lite.dat and security.dat files
         run: |
@@ -194,10 +200,12 @@ jobs:
           sha256sum release/geoip-lite.dat > release/geoip-lite.dat.sha256sum
           sha256sum release/security-ip.dat > release/security-ip.dat.sha256sum
           sha256sum release/geoip-services.dat > release/geoip-services.dat.sha256sum
+          sha256sum release/cdn-ip.dat > release/cdn-ip.dat.sha256sum
           sha256sum release/Country.mmdb > release/Country.mmdb.sha256sum
           sha256sum release/Country-lite.mmdb > release/Country-lite.mmdb.sha256sum
           sha256sum release/Security-ip.mmdb > release/Security-ip.mmdb.sha256sum
           sha256sum release/Services.mmdb > release/Services.mmdb.sha256sum
+          sha256sum release/CDN.mmdb > release/CDN.mmdb.sha256sum
           sha256sum release/geosite.dat > release/geosite.dat.sha256sum
           sha256sum release/geosite-lite.dat > release/geosite-lite.dat.sha256sum
           sha256sum release/security.dat > release/security.dat.sha256sum
@@ -223,7 +231,7 @@ jobs:
         if: ${{ !inputs.PRE_RELEASE }}
         run: |
           cd release || exit 1
-          for file in $(ls); do
+          find . -type f | sed 's|^\./||' | while read -r file; do
             curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/${file}"
           done
 

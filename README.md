@@ -90,6 +90,12 @@ This is an Enhanced and All-in-One set of geo-location routing files optimized f
 
 ---
 
+### cdn-ip.dat
+
+[https://raw.githubusercontent.com/Chocolate4U/Iran-v2ray-rules/release/cdn-ip.dat](https://raw.githubusercontent.com/Chocolate4U/Iran-v2ray-rules/release/cdn-ip.dat)
+
+---
+
 ## <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/jsdelivr/white"><source media="(prefers-color-scheme: light)" srcset="https://cdn.simpleicons.org/jsdelivr/dark"><img height="32" width="32" alt="github logo in dark and light mode." src="https://cdn.simpleicons.org/jsdelivr/dark"></picture> From jsDelivr CDN
 
 ### geoip.dat
@@ -157,6 +163,16 @@ This is an Enhanced and All-in-One set of geo-location routing files optimized f
 </details>
 
 ---
+
+### cdn-ip.dat
+
+[https://cdn.jsdelivr.net/gh/chocolate4u/Iran-v2ray-rules@release/cdn-ip.dat](https://cdn.jsdelivr.net/gh/chocolate4u/Iran-v2ray-rules@release/cdn-ip.dat)
+
+---
+
+## Other formats
+
+Besides the `.dat`/`.mmdb` bundles above, every category is also published per-file under the [release branch](https://github.com/Chocolate4U/Iran-v2ray-rules/tree/release) in these formats: plain text (`/`), sing-box SRS (`/srs`), mihomo MRS (`/mrs`), Clash RuleSet (`/clash/ipcidr`, `/clash/classical`), Surge RuleSet (`/surge`), and nginx `allow`/`deny` configs (`/nginx/allow`, `/nginx/deny`).
 
 # :computer: Usage
 
@@ -244,6 +260,9 @@ Add the following to your v2ray/xray client configuration:
 - `geoip:parspack`  
   Contains the IP addresses of ParsPack.com CDN. :information_source: Integrated in `geoip:ir` and no longer needed to be written as a separate rule.
 
+- `geoip:cdn`  
+  Aggregate of all CDN and cloud-hosting IP addresses in this project: `arvancloud`, `derakcloud`, `iranserver`, `parspack`, `cloudflare`, `cloudfront`, `fastly`, `gcore`, `amazon`, `microsoft`, `google`, `oracle`, `digitalocean` and `linode`.
+
 - `geoip:cloudflare`  
   Contains the IP addresses of Cloudflare CDN.
 
@@ -329,6 +348,14 @@ Add the following to your v2ray/xray client configuration:
 </details>
 
 <details>
+  <summary><strong>Categories in <code>cdn-ip.dat</code></strong></summary>
+
+- `geoip:cdn`  
+  Aggregate of all CDN and cloud-hosting IP addresses in this project: `arvancloud`, `derakcloud`, `iranserver`, `parspack`, `cloudflare`, `cloudfront`, `fastly`, `gcore`, `amazon`, `microsoft`, `google`, `oracle`, `digitalocean` and `linode`.
+
+</details>
+
+<details>
   <summary><strong>Categories in <code>geoip-services.dat</code></strong></summary>
 
 - `geoip:arvancloud`  
@@ -342,6 +369,9 @@ Add the following to your v2ray/xray client configuration:
 
 - `geoip:parspack`  
   Contains the IP addresses of ParsPack.com CDN.
+
+- `geoip:cdn`  
+  Aggregate of all CDN and cloud-hosting IP addresses in this project: `arvancloud`, `derakcloud`, `iranserver`, `parspack`, `cloudflare`, `cloudfront`, `fastly`, `gcore`, `amazon`, `microsoft`, `google`, `oracle`, `digitalocean` and `linode`.
 
 - `geoip:cloudflare`  
   Contains the IP addresses of Cloudflare CDN.
@@ -424,6 +454,13 @@ Same as `Security-IP` but in Maxmind's MMDB format.
   <summary><strong>Categories in <code>Services.mmdb</code></strong></summary>
 
 same as `GeoIP-Services` but in Maxmind's MMDB format.
+
+</details>
+
+<details>
+  <summary><strong>Categories in <code>CDN.mmdb</code></strong></summary>
+
+Same as `cdn-ip.dat` but in Maxmind's MMDB format.
 
 </details>
 

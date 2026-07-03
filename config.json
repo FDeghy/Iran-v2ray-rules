@@ -36,7 +36,23 @@
       "type": "text",
       "action": "add",
       "args": {
+        "name": "cdn",
+        "uri": "./ir-cdn/arvancloud.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
         "name": "ir",
+        "uri": "./ir-cdn/derakcloud.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "cdn",
         "uri": "./ir-cdn/derakcloud.txt"
       }
     },
@@ -52,7 +68,23 @@
       "type": "text",
       "action": "add",
       "args": {
+        "name": "cdn",
+        "uri": "./ir-cdn/iranserver.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
         "name": "ir",
+        "uri": "./ir-cdn/parspack.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "cdn",
         "uri": "./ir-cdn/parspack.txt"
       }
     },
@@ -157,7 +189,23 @@
       "type": "text",
       "action": "add",
       "args": {
+        "name": "cdn",
+        "uri": "https://www.cloudflare.com/ips-v4"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
         "name": "cloudflare",
+        "uri": "https://www.cloudflare.com/ips-v6"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "cdn",
         "uri": "https://www.cloudflare.com/ips-v6"
       }
     },
@@ -182,6 +230,15 @@
       "type": "json",
       "action": "add",
       "args": {
+        "name": "cdn",
+        "uri": "https://www.gstatic.com/ipranges/goog.json",
+        "jsonPath": ["prefixes.#.ipv4Prefix", "prefixes.#.ipv6Prefix"]
+      }
+    },
+    {
+      "type": "json",
+      "action": "add",
+      "args": {
         "name": "google",
         "uri": "https://www.gstatic.com/ipranges/cloud.json",
         "jsonPath": ["prefixes.#.ipv4Prefix", "prefixes.#.ipv6Prefix"]
@@ -191,7 +248,25 @@
       "type": "json",
       "action": "add",
       "args": {
+        "name": "cdn",
+        "uri": "https://www.gstatic.com/ipranges/cloud.json",
+        "jsonPath": ["prefixes.#.ipv4Prefix", "prefixes.#.ipv6Prefix"]
+      }
+    },
+    {
+      "type": "json",
+      "action": "add",
+      "args": {
         "name": "fastly",
+        "uri": "https://api.fastly.com/public-ip-list",
+        "jsonPath": ["addresses", "ipv6_addresses"]
+      }
+    },
+    {
+      "type": "json",
+      "action": "add",
+      "args": {
+        "name": "cdn",
         "uri": "https://api.fastly.com/public-ip-list",
         "jsonPath": ["addresses", "ipv6_addresses"]
       }
@@ -212,7 +287,28 @@
       "type": "json",
       "action": "add",
       "args": {
+        "name": "cdn",
+        "uri": "https://ip-ranges.amazonaws.com/ip-ranges.json",
+        "jsonPath": [
+          "prefixes.#(service==\"CLOUDFRONT\")#.ip_prefix",
+          "ipv6_prefixes.#(service==\"CLOUDFRONT\")#.ipv6_prefix"
+        ]
+      }
+    },
+    {
+      "type": "json",
+      "action": "add",
+      "args": {
         "name": "gcore",
+        "uri": "https://api.gcore.com/cdn/public-ip-list",
+        "jsonPath": ["addresses", "addresses_v6"]
+      }
+    },
+    {
+      "type": "json",
+      "action": "add",
+      "args": {
+        "name": "cdn",
         "uri": "https://api.gcore.com/cdn/public-ip-list",
         "jsonPath": ["addresses", "addresses_v6"]
       }
@@ -229,7 +325,23 @@
       "type": "text",
       "action": "add",
       "args": {
+        "name": "cdn",
+        "uri": "./ipranges/amazon/ipv4_merged.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
         "name": "amazon",
+        "uri": "./ipranges/amazon/ipv6_merged.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "cdn",
         "uri": "./ipranges/amazon/ipv6_merged.txt"
       }
     },
@@ -245,7 +357,23 @@
       "type": "text",
       "action": "add",
       "args": {
+        "name": "cdn",
+        "uri": "./ipranges/microsoft/ipv4_merged.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
         "name": "microsoft",
+        "uri": "./ipranges/microsoft/ipv6_merged.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "cdn",
         "uri": "./ipranges/microsoft/ipv6_merged.txt"
       }
     },
@@ -317,7 +445,23 @@
       "type": "text",
       "action": "add",
       "args": {
+        "name": "cdn",
+        "uri": "./ipranges/oracle/ipv4_merged.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
         "name": "digitalocean",
+        "uri": "./ipranges/digitalocean/ipv4_merged.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "cdn",
         "uri": "./ipranges/digitalocean/ipv4_merged.txt"
       }
     },
@@ -333,6 +477,14 @@
       "type": "text",
       "action": "add",
       "args": {
+        "name": "cdn",
+        "uri": "./ipranges/digitalocean/ipv6_merged.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
         "name": "linode",
         "uri": "./ipranges/linode/ipv4_merged.txt"
       }
@@ -341,7 +493,23 @@
       "type": "text",
       "action": "add",
       "args": {
+        "name": "cdn",
+        "uri": "./ipranges/linode/ipv4_merged.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
         "name": "linode",
+        "uri": "./ipranges/linode/ipv6_merged.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "cdn",
         "uri": "./ipranges/linode/ipv6_merged.txt"
       }
     },
@@ -376,7 +544,72 @@
         "ipv4": "geolite2/GeoLite2-ASN-Blocks-IPv4.csv",
         "ipv6": "geolite2/GeoLite2-ASN-Blocks-IPv6.csv",
         "wantedList": {
+          "cdn": [
+            "AS402542",
+            "AS400095",
+            "AS395747",
+            "AS394536",
+            "AS209242",
+            "AS203898",
+            "AS202623",
+            "AS14789",
+            "AS139242",
+            "AS133877",
+            "AS13335",
+            "AS132892",
+            "AS895",
+            "AS54113",
+            "AS394192",
+            "AS199524",
+            "AS202422",
+            "AS6432",
+            "AS55023",
+            "AS45566",
+            "AS43515",
+            "AS41264",
+            "AS40873",
+            "AS396982",
+            "AS396178",
+            "AS395973",
+            "AS394699",
+            "AS394639",
+            "AS394507",
+            "AS394089",
+            "AS36987",
+            "AS36561",
+            "AS36520",
+            "AS36492",
+            "AS36411",
+            "AS36385",
+            "AS36384",
+            "AS36383",
+            "AS36040",
+            "AS36039",
+            "AS33715",
+            "AS32381",
+            "AS26910",
+            "AS26684",
+            "AS22859",
+            "AS22577",
+            "AS214611",
+            "AS214609",
+            "AS209539",
+            "AS209519",
+            "AS209504",
+            "AS19527",
+            "AS19448",
+            "AS19425",
+            "AS16591",
+            "AS16550",
+            "AS15169",
+            "AS151231",
+            "AS13949",
+            "AS139190",
+            "AS139070"
+          ],
           "cloudflare": [
+            "AS402542",
+            "AS400095",
             "AS395747",
             "AS394536",
             "AS209242",
@@ -388,9 +621,9 @@
             "AS13335",
             "AS132892"
           ],
-          "facebook": ["AS63293", "AS54115", "AS32934"],
-          "fastly": ["AS54113", "AS394192"],
-          "gcore": ["199524", "202422"],
+          "facebook": ["AS63293", "AS54115", "AS34825", "AS32934", "AS149642"],
+          "fastly": ["AS895", "AS54113", "AS394192"],
+          "gcore": ["AS199524", "AS202422"],
           "google": [
             "AS6432",
             "AS55023",
@@ -399,26 +632,40 @@
             "AS41264",
             "AS40873",
             "AS396982",
+            "AS396178",
             "AS395973",
             "AS394699",
             "AS394639",
             "AS394507",
+            "AS394089",
             "AS36987",
+            "AS36561",
+            "AS36520",
             "AS36492",
+            "AS36411",
             "AS36385",
             "AS36384",
+            "AS36383",
             "AS36040",
             "AS36039",
+            "AS33715",
+            "AS32381",
             "AS26910",
             "AS26684",
             "AS22859",
             "AS22577",
+            "AS214611",
+            "AS214609",
+            "AS209539",
+            "AS209519",
+            "AS209504",
             "AS19527",
             "AS19448",
             "AS19425",
             "AS16591",
             "AS16550",
             "AS15169",
+            "AS151231",
             "AS13949",
             "AS139190",
             "AS139070"
@@ -465,6 +712,7 @@
           "amazon",
           "arvancloud",
           "bing",
+          "cdn",
           "cloudflare",
           "cloudfront",
           "derakcloud",
@@ -493,6 +741,14 @@
       "args": {
         "outputName": "security-ip.dat",
         "wantedList": ["phishing", "malware"]
+      }
+    },
+    {
+      "type": "v2rayGeoIPDat",
+      "action": "output",
+      "args": {
+        "outputName": "cdn-ip.dat",
+        "wantedList": ["cdn"]
       }
     },
     {
@@ -575,7 +831,55 @@
       }
     },
     {
+      "type": "maxmindMMDB",
+      "action": "output",
+      "args": {
+        "outputName": "CDN.mmdb",
+        "wantedList": ["cdn"]
+      }
+    },
+    {
+      "type": "singboxSRS",
+      "action": "output"
+    },
+    {
+      "type": "mihomoMRS",
+      "action": "output"
+    },
+    {
       "type": "text",
+      "action": "output"
+    },
+    {
+      "type": "text",
+      "action": "output",
+      "args": {
+        "outputDir": "./output/nginx/allow",
+        "outputExtension": ".conf",
+        "addPrefixInLine": "allow ",
+        "addSuffixInLine": ";"
+      }
+    },
+    {
+      "type": "text",
+      "action": "output",
+      "args": {
+        "outputDir": "./output/nginx/deny",
+        "outputExtension": ".conf",
+        "addPrefixInLine": "deny ",
+        "addSuffixInLine": ";"
+      }
+    },
+    {
+      "type": "clashRuleSetClassical",
+      "action": "output"
+    },
+    {
+      "type": "clashRuleSet",
+      "action": "output"
+    },
+    {
+      "type": "surgeRuleSet",
       "action": "output"
     }
   ]

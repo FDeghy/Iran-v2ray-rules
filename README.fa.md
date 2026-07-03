@@ -88,6 +88,12 @@
 
 ---
 
+### cdn-ip.dat
+
+[https://raw.githubusercontent.com/Chocolate4U/Iran-v2ray-rules/release/cdn-ip.dat](https://raw.githubusercontent.com/Chocolate4U/Iran-v2ray-rules/release/cdn-ip.dat)
+
+---
+
 ## <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/jsdelivr/white"><source media="(prefers-color-scheme: light)" srcset="https://cdn.simpleicons.org/jsdelivr/dark"><img height="32" width="32" alt="github logo in dark and light mode." src="https://cdn.simpleicons.org/jsdelivr/dark"></picture> From jsDelivr CDN
 
 ### geoip.dat
@@ -155,6 +161,16 @@
 </details>
 
 ---
+
+### cdn-ip.dat
+
+[https://cdn.jsdelivr.net/gh/chocolate4u/Iran-v2ray-rules@release/cdn-ip.dat](https://cdn.jsdelivr.net/gh/chocolate4u/Iran-v2ray-rules@release/cdn-ip.dat)
+
+---
+
+## سایر فرمت‌ها
+
+علاوه بر باندل‌های `.dat`/`.mmdb` بالا، هر دسته‌بندی به صورت جداگانه در [شاخه release](https://github.com/Chocolate4U/Iran-v2ray-rules/tree/release) با این فرمت‌ها نیز منتشر می‌شود: متن ساده (`/`)، sing-box SRS (`/srs`)، mihomo MRS (`/mrs`)، Clash RuleSet (`/clash/ipcidr`, `/clash/classical`)، Surge RuleSet (`/surge`) و کانفیگ‌های nginx `allow`/`deny` (`/nginx/allow`, `/nginx/deny`).
 
 # :computer: نحوه استفاده
 
@@ -242,6 +258,9 @@
 <li><code>geoip:parspack</code></li>
   <p align="right">دربر گیرنده IP های سرویس توزیع محتوای پارس پک. :information_source: این دسته بندی در "geoip:ir" ادغام شده و در صورت استفاده از "geoip:ir"، نیازی به این دسته بندی نیست.</p>
 
+<li><code>geoip:cdn</code></li>
+  <p align="right">مجموع کلیه IP های سرویس های CDN و میزبانی ابری این پروژه: "arvancloud"، "derakcloud"، "iranserver"، "parspack"، "cloudflare"، "cloudfront"، "fastly"، "gcore"، "amazon"، "microsoft"، "google"، "oracle"، "digitalocean" و "linode".</p>
+
 <li><code>geoip:cloudflare</code></li>
   <p align="right">دربرگیرنده IP های سرویس توزیع محتوای کلودفلر.</p>
 
@@ -325,6 +344,15 @@
 
 <li><code>geoip:malware</code></li>
   <p align="right">دربر گیرنده IP های بدافزار.</p>
+</ul>
+</details>
+
+<details dir="rtl">
+  <summary><strong>دسته‌های موجود در<code>cdn-ip.dat</code></strong></summary>
+
+<ul dir="rtl">
+<li><code>geoip:cdn</code></li>
+  <p align="right">مجموع کلیه IP های سرویس های CDN و میزبانی ابری این پروژه: "arvancloud"، "derakcloud"، "iranserver"، "parspack"، "cloudflare"، "cloudfront"، "fastly"، "gcore"، "amazon"، "microsoft"، "google"، "oracle"، "digitalocean" و "linode".</p>
 </ul>
 </details>
 
@@ -422,6 +450,12 @@
   <summary><strong>دسته‌های موجود در<code>Services.mmdb</code></strong></summary>
 
 <p align="right">مثل دسته "GeoIP-Services" اما با فرمت اختصاصی MaxMind.</p>
+</details>
+
+<details dir="rtl">
+  <summary><strong>دسته‌های موجود در<code>CDN.mmdb</code></strong></summary>
+
+<p align="right">مثل دسته "cdn-ip.dat" اما با فرمت اختصاصی MaxMind.</p>
 </details>
 
 <h2 dir="rtl">GeoSite</h2>
